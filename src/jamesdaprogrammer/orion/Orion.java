@@ -1,64 +1,55 @@
 package jamesdaprogrammer.orion;
 
-import static org.lwjgl.glfw.GLFW.*;
-
-import org.lwjgl.glfw.GLFWErrorCallback;
-import org.lwjgl.opengl.GL;
-
 public class Orion {
-    private static final Orion INSTANCE = new Orion();
+    private static OrionApplication app;
 
-    private Window window;
-    private IApplication app;
-    private boolean running;
-    
-    public static void init(int width, int height, String title, IApplication app) {
-        if (!glfwInit())
-            throw new IllegalStateException("Failed to initialise glfw.");
-
-        glfwSetErrorCallback(GLFWErrorCallback.createPrint(System.err));
-
-        INSTANCE.window = new Window(width, height, title);
-
-        // initialise OpenGL
-        glfwMakeContextCurrent(INSTANCE.window.getPointer());
-        GL.createCapabilities();
-
-        // enable vsync
-        glfwSwapInterval(1);
-
-        INSTANCE.app = app;
-        INSTANCE.app.onCreate();
+    public static void init(Configuration config, IApplication clientApp) {
+        app = new OrionApplication();
+        app.create(config, clientApp);
     }
 
     public static void start() {
-        INSTANCE.app.onStart();
-        INSTANCE.run();
+        app.start();
     }
 
-    private void run() {
-        window.show();
+    public static OrionApplication getApp() {
+        return app;
+    }
 
-        double firstTime = 0;
-        double lastTime = System.nanoTime() / 1000000000.0;
-        double deltaTime = 0;
+    public static class Configuration {
+        public int width, height;
+        public String title;
+        public boolean vsync;
+        public boolean resizable;
+        public boolean fullscreen;
 
-        running = true;
-        while (!window.shouldClose()) {
-            firstTime = System.nanoTime() / 1000000000.0;
-            deltaTime = firstTime - lastTime;
-            lastTime = firstTime;
-
-            glfwPollEvents();
-
-            app.onUpdate((float) deltaTime);
-            app.onRender();
-
-            window.swapBuffers();
+        public void setWidth(int width) {
+            this.width = width;
         }
 
-        app.onDispose();
-        glfwTerminate();
-    }
+        public void setHeight(int height) {
+            this.height = height;
+        }
 
+        public void setTitle(String title) {
+            this.title = title;
+        }
+
+        public void setVsync(boolean vsync) {
+            this.vsync = vsync;
+        }
+
+        public void setResizable(boolean resizable) {
+            this.resizable = resizable;
+        }
+
+        public void setFullscreen(boolean fullscreen) {
+            this.fullscreen = fullscreen;
+        }
+
+        public void setSize(int width, int height) {
+            this.width = width;
+            this.height = height;
+        }
+    }
 }
