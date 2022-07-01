@@ -1,4 +1,4 @@
-package jamesdaprogrammer.orion.engine.opengl;
+package jamesdaprogrammer.orion.opengl;
 
 import static org.lwjgl.opengl.GL43.*;
 

@@ -1,4 +1,4 @@
-package jamesdaprogrammer.orion.engine;
+package jamesdaprogrammer.orion;
 
 import static org.lwjgl.glfw.GLFW.*;
 

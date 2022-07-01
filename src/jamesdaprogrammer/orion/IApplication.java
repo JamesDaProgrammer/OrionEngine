@@ -1,4 +1,4 @@
-package jamesdaprogrammer.orion.engine;
+package jamesdaprogrammer.orion;
 
 public interface IApplication {
     void onCreate();

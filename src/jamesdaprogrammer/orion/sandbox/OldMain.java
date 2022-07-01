@@ -9,10 +9,10 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-import jamesdaprogrammer.orion.engine.OldWindowClass;
-import jamesdaprogrammer.orion.engine.opengl.ShaderProgram;
-import jamesdaprogrammer.orion.engine.opengl.VertexArray;
-import jamesdaprogrammer.orion.engine.opengl.VertexBuffer;
+import jamesdaprogrammer.orion.OldWindowClass;
+import jamesdaprogrammer.orion.opengl.ShaderProgram;
+import jamesdaprogrammer.orion.opengl.VertexArray;
+import jamesdaprogrammer.orion.opengl.VertexBuffer;
 
 public class OldMain {
     private static OldWindowClass window = OldWindowClass.get();

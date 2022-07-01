@@ -1,4 +1,4 @@
-package jamesdaprogrammer.orion.engine;
+package jamesdaprogrammer.orion;
 
 @FunctionalInterface
 public interface IDisposable {

@@ -1,7 +1,7 @@
 package jamesdaprogrammer.orion.sandbox;
 
-import jamesdaprogrammer.orion.engine.IApplication;
-import jamesdaprogrammer.orion.engine.Orion;
+import jamesdaprogrammer.orion.IApplication;
+import jamesdaprogrammer.orion.Orion;
 
 public class Main {
     public static void main(String[] args) {

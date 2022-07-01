@@ -1,4 +1,4 @@
-package jamesdaprogrammer.orion.engine;
+package jamesdaprogrammer.orion;
 
 import static org.lwjgl.glfw.GLFW.*;
 
@@ -20,12 +20,12 @@ public class Orion {
 
         INSTANCE.window = new Window(width, height, title);
 
-        // enable vsync
-        glfwSwapInterval(1);
-
         // initialise OpenGL
         glfwMakeContextCurrent(INSTANCE.window.getPointer());
         GL.createCapabilities();
+
+        // enable vsync
+        glfwSwapInterval(1);
 
         INSTANCE.app = app;
         INSTANCE.app.onCreate();
@@ -40,12 +40,12 @@ public class Orion {
         window.show();
 
         double firstTime = 0;
-        double lastTime = System.nanoTime() / 1000000000;
+        double lastTime = System.nanoTime() / 1000000000.0;
         double deltaTime = 0;
 
         running = true;
         while (!window.shouldClose()) {
-            firstTime = System.nanoTime() / 1000000000;
+            firstTime = System.nanoTime() / 1000000000.0;
             deltaTime = firstTime - lastTime;
             lastTime = firstTime;
 
